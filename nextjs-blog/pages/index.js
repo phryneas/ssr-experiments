@@ -15,7 +15,7 @@ export default function Home({}) {
             <a href="/pokemon/bulbasaur">Bulbasaur (SSG)</a>
           </li>
           <li>
-            <a href="/pokemon/ivysaur">Ivysaur (SSR)</a>
+            <a href="/pokemon/beedrill">Beedrill (fallback SSG)</a>
           </li>
         </ul>
       </section>

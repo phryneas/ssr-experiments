@@ -18,15 +18,10 @@ const reducer: typeof combinedReducer = (state, action) => {
   return combinedReducer(state, action);
 };
 
-const logActions: Middleware = () => (next) => (action) => {
-  console.log(action);
-  return next(action);
-};
-
-const makeStore = () =>
+export const makeStore = () =>
   configureStore({
     reducer,
-    middleware: (gDM) => gDM().concat(pokemonApi.middleware).concat(logActions),
+    middleware: (gDM) => gDM().concat(pokemonApi.middleware),
   });
 
 export type AppStore = ReturnType<typeof makeStore>;
