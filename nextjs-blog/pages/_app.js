@@ -1,5 +1,16 @@
+const { default: AbortController } = require("abort-controller");
+const { default: fetch, Headers, Request, Response } = require("node-fetch");
+
+Object.assign(globalThis, {
+  fetch,
+  Headers,
+  Request,
+  Response,
+  AbortController,
+});
+
 import "../styles/global.css";
-import { wrapper } from "../lib/store";
+const { wrapper } = require("../lib/store");
 
 export function App({ Component, pageProps }) {
   return <Component {...pageProps} />;

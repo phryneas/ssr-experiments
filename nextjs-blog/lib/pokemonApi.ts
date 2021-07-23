@@ -1,14 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const bq = fetchBaseQuery({ baseUrl: "https://pokeapi.co/api/v2/" });
-const withoutSignal: typeof bq = (a, b, c) => {
-  delete (b as any).signal;
-  console.log(a, b, c);
-  return bq(a, b, c);
-};
-
 export const pokemonApi = createApi({
-  baseQuery: withoutSignal,
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://pokeapi.co/api/v2/",
+  }),
   tagTypes: [],
   endpoints: (builder) => ({
     getPokemonByName: builder.query<

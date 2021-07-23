@@ -1,4 +1,9 @@
-import { combineReducers, configureStore, createSlice } from "@reduxjs/toolkit";
+import {
+  combineReducers,
+  configureStore,
+  createSlice,
+  Middleware,
+} from "@reduxjs/toolkit";
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import { pokemonApi } from "./pokemonApi";
 
@@ -13,10 +18,15 @@ const reducer: typeof combinedReducer = (state, action) => {
   return combinedReducer(state, action);
 };
 
+const logActions: Middleware = () => (next) => (action) => {
+  console.log(action);
+  return next(action);
+};
+
 const makeStore = () =>
   configureStore({
     reducer,
-    middleware: (gDM) => gDM().concat(pokemonApi.middleware),
+    middleware: (gDM) => gDM().concat(pokemonApi.middleware).concat(logActions),
   });
 
 export type AppStore = ReturnType<typeof makeStore>;

@@ -6,8 +6,9 @@ import {
   useGetPokemonByNameQuery,
 } from "../../lib/pokemonApi";
 
-export default function Post(props: { name: string }) {
-  const result = useGetPokemonByNameQuery(props?.name);
+// Partial because first render (will get empty props while `getStaticProps` runs)
+export default function Post(props: Partial<{ name: string }>) {
+  const result = useGetPokemonByNameQuery(props?.name ?? skipToken);
   console.log({ props, result });
   const { isLoading, error, data } = result;
 
@@ -35,11 +36,12 @@ export default function Post(props: { name: string }) {
 export async function getStaticPaths() {
   return {
     paths: ["/pokemon/bulbasaur"],
-    fallback: false,
+    fallback: true,
   };
 }
 
 import { wrapper } from "../../lib/store";
+import { skipToken } from "@reduxjs/toolkit/dist/query";
 
 export const getStaticProps = wrapper.getStaticProps((store) => async (x) => {
   console.log(x);
