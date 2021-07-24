@@ -12,10 +12,14 @@ export default function Home({}) {
         <h2>take a look at some pokemon</h2>
         <ul>
           <li>
-            <a href="/pokemon/bulbasaur">Bulbasaur (SSG)</a>
+            Bulbasaur <a href="/pokemon/bulbasaur">dynamic</a>{" "}
+            <a href="/pokemon/ssr/bulbasaur">SSR</a>{" "}
+            <a href="/pokemon/ssg/bulbasaur">SSG</a>
           </li>
           <li>
-            <a href="/pokemon/beedrill">Beedrill (fallback SSG)</a>
+            Beedrill <a href="/pokemon/beedrill">dynamic</a>{" "}
+            <a href="/pokemon/ssr/beedrill">SSR</a>{" "}
+            <a href="/pokemon/ssg/beedrill"> fallback SSG</a>
           </li>
         </ul>
       </section>
