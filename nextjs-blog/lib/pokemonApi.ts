@@ -1,9 +1,15 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { HYDRATE } from "next-redux-wrapper";
 
 export const pokemonApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://pokeapi.co/api/v2/",
   }),
+  extractRehydrationInfo(action) {
+    if (action.type === HYDRATE) {
+      return action.payload.api;
+    }
+  },
   tagTypes: [],
   endpoints: (builder) => ({
     getPokemonByName: builder.query<

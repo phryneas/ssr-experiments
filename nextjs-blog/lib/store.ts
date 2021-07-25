@@ -1,26 +1,12 @@
-import {
-  combineReducers,
-  configureStore,
-  createSlice,
-  Middleware,
-} from "@reduxjs/toolkit";
-import { createWrapper, HYDRATE } from "next-redux-wrapper";
+import { configureStore } from "@reduxjs/toolkit";
+import { createWrapper } from "next-redux-wrapper";
 import { pokemonApi } from "./pokemonApi";
-
-const combinedReducer = combineReducers({
-  [pokemonApi.reducerPath]: pokemonApi.reducer,
-});
-
-const reducer: typeof combinedReducer = (state, action) => {
-  if (action.type === HYDRATE) {
-    return action.payload;
-  }
-  return combinedReducer(state, action);
-};
 
 export const makeStore = () =>
   configureStore({
-    reducer,
+    reducer: {
+      [pokemonApi.reducerPath]: pokemonApi.reducer,
+    },
     middleware: (gDM) => gDM().concat(pokemonApi.middleware),
   });
 

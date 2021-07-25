@@ -8,8 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "https://pkg.csb.dev/reduxjs/redux-toolkit/commit/3f8c090b/@reduxjs/toolkit",
-    "@rtk-query/graphql-request-base-query": "https://pkg.csb.dev/reduxjs/redux-toolkit/commit/3f8c090b/@rtk-query/graphql-request-base-query",
+    "@reduxjs/toolkit": "https://pkg.csb.dev/reduxjs/redux-toolkit/commit/3e761c1e/@reduxjs/toolkit",
     "@types/node-fetch": "^2.5.11",
     "abort-controller": "^3.0.0",
     "date-fns": "^2.11.1",
