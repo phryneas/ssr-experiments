@@ -5,9 +5,9 @@ export const pokemonApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://pokeapi.co/api/v2/",
   }),
-  extractRehydrationInfo(action) {
+  extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
-      return action.payload.api;
+      return action.payload[reducerPath];
     }
   },
   tagTypes: [],
@@ -28,7 +28,7 @@ export const pokemonApi = createApi({
 export const {
   useGetPokemonByNameQuery,
   useGetPokemonListQuery,
-  getRunningOperationPromises,
+  util: { getRunningOperationPromises },
 } = pokemonApi;
 
 // export endpoints for use in SSR
