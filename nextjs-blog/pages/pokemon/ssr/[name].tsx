@@ -1,6 +1,6 @@
 import {
   getPokemonByName,
-  getRunningOperationPromises,
+  getRunningQueriesThunk,
 } from "../../../lib/pokemonApi";
 
 import { wrapper } from "../../../lib/store";
@@ -15,7 +15,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
       store.dispatch(getPokemonByName.initiate(name));
     }
 
-    await Promise.all(getRunningOperationPromises());
+    await Promise.all(store.dispatch(getRunningQueriesThunk()));
 
     return {
       props: {},
