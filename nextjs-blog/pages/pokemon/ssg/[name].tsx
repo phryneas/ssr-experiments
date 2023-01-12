@@ -2,7 +2,7 @@ import Pokemon from "../[name]";
 import {
   getPokemonByName,
   getPokemonList,
-  getRunningOperationPromises,
+  getRunningQueriesThunk,
 } from "../../../lib/pokemonApi";
 import { makeStore } from "../../../lib/store";
 
@@ -29,7 +29,7 @@ export const getStaticProps = wrapper.getStaticProps(
       store.dispatch(getPokemonByName.initiate(name));
     }
 
-    await Promise.all(getRunningOperationPromises());
+    await Promise.all(store.dispatch(getRunningQueriesThunk()));
 
     return {
       props: {},

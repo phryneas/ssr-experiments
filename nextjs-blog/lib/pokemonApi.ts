@@ -28,7 +28,7 @@ export const pokemonApi = createApi({
 export const {
   useGetPokemonByNameQuery,
   useGetPokemonListQuery,
-  util: { getRunningOperationPromises },
+  util: { getRunningQueriesThunk },
 } = pokemonApi;
 
 // export endpoints for use in SSR
